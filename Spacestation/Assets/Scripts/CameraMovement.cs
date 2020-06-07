@@ -7,10 +7,26 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Camera cam;
 
     private Vector3 previousPosition;
+    private float minFov = 15f;
+    private float maxFov = 90f;
+    public float sensitivity = 10f;
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)){
+        CameraRotate();
+        CameraZoom();
+    }
+
+    private void CameraZoom (){
+        float fov = Camera.main.fieldOfView;
+        fov += Input.GetAxis("Mouse ScrollWheel") * sensitivity;
+        fov = Mathf.Clamp(fov, minFov, maxFov);
+        Camera.main.fieldOfView = fov;
+    }
+
+    private void CameraRotate ()
+    {
+    if (Input.GetMouseButtonDown(0)){
             previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
         }
 
@@ -26,4 +42,7 @@ public class CameraMovement : MonoBehaviour
             previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
         }
     }
+
 }
+
+
