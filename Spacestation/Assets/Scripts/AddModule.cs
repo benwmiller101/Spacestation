@@ -10,6 +10,8 @@ public class AddModule : MonoBehaviour
     public GameObject CubeRed;
     public GameObject CubeGreen;
     public GameObject CubeBlue;
+    public GameObject Cross;
+    public GameObject Long;
     public GameObject hardpoint;
 
 //Every frame, if mouse is clicking on hardpoing
@@ -48,10 +50,10 @@ public class AddModule : MonoBehaviour
             Instantiate(CubeGreen, hardpoint.transform.position, Quaternion.identity);
         }else if(type == "blue"){
             Instantiate(CubeBlue, hardpoint.transform.position, Quaternion.identity);
-        }else if(type == "red") {
-            Instantiate(CubeRed, hardpoint.transform.position, Quaternion.identity);
-        }else if(type == "rock") {
-            Instantiate(Cube, hardpoint.transform.position, Quaternion.identity);
+        }else if(type == "long") {
+            Instantiate(Long, hardpoint.transform.position, Quaternion.identity);
+        }else if(type == "cross") {
+            Instantiate(Cross, hardpoint.transform.position, Quaternion.identity);
         }
         
         hardpoint.SetActive(false);
