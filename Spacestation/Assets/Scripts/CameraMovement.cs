@@ -10,27 +10,19 @@ public class CameraMovement : MonoBehaviour
     private float minFov = 15f;
     private float maxFov = 90f;
     public float sensitivity = 10f;
-    public float Range = 10f;
-     public GameObject Cube;
+ 
+    void Start(){
+        
+    }
 
     void Update()
     {
         CameraRotate();
         CameraZoom();
-        PlaceBlock();
+        
     }
 
-    private void PlaceBlock(){
-        if (Input.GetMouseButtonDown(0)){
-            RaycastHit hitpoint;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hitpoint, Range)){
-                Instantiate(Cube,hitpoint.normal + hitpoint.transform.position, hitpoint.transform.rotation);
-                Debug.Log("placed a ciube");
-            }
-        }
-    }
     
     private void CameraZoom (){
         float fov = Camera.main.fieldOfView;
