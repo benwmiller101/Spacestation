@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Base
-  - hp
+  - hardpoint
   layers:
   - Default
   - TransparentFX

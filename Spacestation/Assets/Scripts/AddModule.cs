@@ -10,66 +10,51 @@ public class AddModule : MonoBehaviour
     public GameObject CubeRed;
     public GameObject CubeGreen;
     public GameObject CubeBlue;
-    public GameObject hp;
-    public Vector3 pos;
-    public bool found;
+    public GameObject hardpoint;
 
-    void Start() {
-
-    }
-
+//Every frame, if mouse is clicking on hardpoing
     void Update() {
         if( Input.GetMouseButtonDown(0) )
         {
             Ray ray = Camera.main.ScreenPointToRay( Input.mousePosition );
             RaycastHit hit;
             
-            if( Physics.Raycast( ray, out hit, 100 ) && found == false ) {
-                if(hit.transform.gameObject.tag == "hp") {
+            if( Physics.Raycast( ray, out hit, 100 )) {
+                if(hit.transform.gameObject.tag == "hardpoint") {
                     PlacementMenu.gameObject.SetActive(true);
-                    pos = hit.transform.position;
-                    found = true;
-                    Debug.Log("ere");
-
+                    hardpoint = hit.transform.gameObject;
                 }
             }
         }
     }
 
 
-
-    public void showHP() {
-
+//Shows all Hardpoints (gameObjects tagged with hp)
+    public void showHardpoint() {
         GameObject[] hps ;
-        hps = GameObject.FindGameObjectsWithTag("hp");
+        hps = GameObject.FindGameObjectsWithTag("hardpoint");
 
         foreach(GameObject SmallHP in hps) {
                 SmallHP.GetComponent<MeshRenderer>().enabled=true;
             }
     }
 
+
+// Called when Button pressed (instantiates module at hardpoint), takes in string to decide type
     public void Instantiate(string type) {
         PlacementMenu.SetActive(false);
-        //GameObject Hardpoint = hp;
 
-        if(type == "green" && found == true){
-            Instantiate(CubeGreen);
-            CubeGreen.transform.position = pos;
-        }
-        /** }else if(type == "blue"){
-            Instantiate(CubeBlue);
-            CubeBlue.transform.position = hp.transform.position;
+        if(type == "green"){
+            Instantiate(CubeGreen, hardpoint.transform.position, Quaternion.identity);
+        }else if(type == "blue"){
+            Instantiate(CubeBlue, hardpoint.transform.position, Quaternion.identity);
         }else if(type == "red") {
-             Instantiate(CubeRed);
-            CubeRed.transform.position = hp.transform.position;
-        }else {
-            Instantiate(Cube);
-            Cube.transform.position = hp.transform.position;
+            Instantiate(CubeRed, hardpoint.transform.position, Quaternion.identity);
+        }else if(type == "rock") {
+            Instantiate(Cube, hardpoint.transform.position, Quaternion.identity);
         }
-        **/
-        found = false;
-        //Debug.Log("hp" + Hardpoint.transform.position);
-        //Hardpoint.SetActive(false);
+        
+        hardpoint.SetActive(false);
     }
 
 }
