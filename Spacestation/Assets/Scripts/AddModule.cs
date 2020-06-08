@@ -11,6 +11,7 @@ public class AddModule : MonoBehaviour
     public GameObject CubeGreen;
     public GameObject CubeBlue;
     public GameObject hardpoint;
+    public GameObject[] array = new GameObject[10];
 
 //Every frame, if mouse is clicking on hardpoing
     void Update() {
