@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 943e7f87afdfb5345a72ccc7af5e89e9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - PlacementMenu: {instanceID: 0}
+  - Cube: {fileID: 2457619188150677221, guid: 2b42f8a597248e745955aa5c94c83336, type: 3}
+  - CubeRed: {fileID: 5670375815428394726, guid: b81ef6cd3455787429e2cd704beb750b,
+      type: 3}
+  - CubeGreen: {fileID: 5731514412604886686, guid: 182f4861927d50244b32d8fbc9e045d4,
+      type: 3}
+  - CubeBlue: {fileID: 8317644529423315916, guid: 7ca9ffadfac56fe4496f36f9bcc2009c,
+      type: 3}
+  - hp: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
