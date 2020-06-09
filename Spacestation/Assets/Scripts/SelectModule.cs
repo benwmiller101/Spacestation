@@ -27,31 +27,29 @@ public class SelectModule : MonoBehaviour
             {
                 if (hit.transform.gameObject.tag == "Module")
                 {
-                    if( LastSelected != null ) 
+                    if( LastSelected != null) 
                     {
-                        deselect();
-                        if (LastSelected.transform != hit.transform )
-                        {
+                        if (LastSelected.transform == hit.transform  ) {
+                            deselect();
+                            LastSelected = null;
+                        }else {
+                             deselect();
                             LastSelected = hit.transform.gameObject;
                             lastMat = hit.transform.gameObject.GetComponent<Renderer>().material;
-                            Debug.Log("Hit1");
                             hit.transform.gameObject.GetComponent<Renderer>().material = mat1;
                         }
                     } else if (LastSelected == null) {
-                            LastSelected = hit.transform.gameObject;
-                            lastMat = hit.transform.gameObject.GetComponent<Renderer>().material;
-                            Debug.Log("Hit2");
-                            hit.transform.gameObject.GetComponent<Renderer>().material = mat1;
-                        }
+                        LastSelected = hit.transform.gameObject;
+                        lastMat = hit.transform.gameObject.GetComponent<Renderer>().material;
+                        hit.transform.gameObject.GetComponent<Renderer>().material = mat1;
                     }
                 }
+             }
                        
-            }
+        }
     }
     
     public void deselect() {
-        Debug.Log("dese");
         LastSelected.gameObject.GetComponent<Renderer>().material = lastMat;
-
     }
 }
