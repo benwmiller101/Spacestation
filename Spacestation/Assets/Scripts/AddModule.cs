@@ -13,6 +13,7 @@ public class AddModule : MonoBehaviour
     public GameObject Cross;
     public GameObject Long;
     public GameObject hardpoint;
+    public GameObject[] array = new GameObject[10];
 
 //Every frame, if mouse is clicking on hardpoing
     void Update() {
