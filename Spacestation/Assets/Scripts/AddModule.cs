@@ -31,21 +31,6 @@ public class AddModule : MonoBehaviour
         }
     }
 
-    private void NodeHover()
-    {
-        if (Input.GetMouseButtonDown(1)){
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, 100))
-            {
-                if (hit.transform.gameObject.tag == "Module")
-                {
-                    //hit.transform.gameObject
-                }
-            }
-        }
-    }
 
 
 //Shows all nodes (gameObjects tagged with hp)

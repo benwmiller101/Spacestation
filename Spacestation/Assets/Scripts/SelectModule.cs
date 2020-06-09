@@ -6,17 +6,22 @@ using UnityEngine.XR.WSA;
 public class SelectModule : MonoBehaviour
 {
     //public  Material mat2;
-    public  Material mat1;
+    public Material mat1;
     GameObject LastSelected = null;
     public Material lastMat;
+    public bool selected;
 
 
     void Update()
     {
         Select();
+        if (selected)
+        {
+
+        }
     }
 
-    public  void Select()
+    public void Select()
     {
         if (Input.GetMouseButtonDown(1))
         {
@@ -27,29 +32,38 @@ public class SelectModule : MonoBehaviour
             {
                 if (hit.transform.gameObject.tag == "Module")
                 {
-                    if( LastSelected != null) 
+                    if (LastSelected != null)
                     {
-                        if (LastSelected.transform == hit.transform  ) {
+                        if (LastSelected.transform == hit.transform)
+                        {
                             deselect();
                             LastSelected = null;
-                        }else {
-                             deselect();
+                            selected = false;
+                        }
+                        else
+                        {
+                            deselect();
                             LastSelected = hit.transform.gameObject;
                             lastMat = hit.transform.gameObject.GetComponent<Renderer>().material;
                             hit.transform.gameObject.GetComponent<Renderer>().material = mat1;
+                            selected = false;
                         }
-                    } else if (LastSelected == null) {
+                    }
+                    else if (LastSelected == null)
+                    {
                         LastSelected = hit.transform.gameObject;
                         lastMat = hit.transform.gameObject.GetComponent<Renderer>().material;
                         hit.transform.gameObject.GetComponent<Renderer>().material = mat1;
+                        selected = true;
                     }
                 }
-             }
-                       
+            }
+
         }
     }
-    
-    public void deselect() {
+
+    public void deselect()
+    {
         LastSelected.gameObject.GetComponent<Renderer>().material = lastMat;
     }
 }

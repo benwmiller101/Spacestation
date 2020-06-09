@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Module : MonoBehaviour
 {
-    private Node node1
-    private Node node2
-    private Node node3
-    private Node node4
+    private Node node1;
+    private Node node2;
+    private Node node3;
+    private Node node4;
 
 
     // Start is called before the first frame update
