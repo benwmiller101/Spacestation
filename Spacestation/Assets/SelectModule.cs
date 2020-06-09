@@ -5,16 +5,18 @@ using UnityEngine.XR.WSA;
 
 public class SelectModule : MonoBehaviour
 {
-    public Material mat2;
-    public Material mat1;
-    private Transform LastSelected;
+    //public  Material mat2;
+    public  Material mat1;
+    GameObject LastSelected = null;
+    public Material lastMat;
+
 
     void Update()
     {
         Select();
     }
 
-    private void Select()
+    public  void Select()
     {
         if (Input.GetMouseButtonDown(1))
         {
@@ -25,15 +27,31 @@ public class SelectModule : MonoBehaviour
             {
                 if (hit.transform.gameObject.tag == "Module")
                 {
-                    if (LastSelected.transform != hit.transform)
+                    if( LastSelected != null ) 
                     {
-                        LastSelected = hit.transform;
-                        Debug.Log("Hit");
-                        hit.transform.gameObject.GetComponent<Renderer>().material = mat1;
-                        LastSelected.gameObject.GetComponent<Renderer>().material = mat2;
+                        deselect();
+                        if (LastSelected.transform != hit.transform )
+                        {
+                            LastSelected = hit.transform.gameObject;
+                            lastMat = hit.transform.gameObject.GetComponent<Renderer>().material;
+                            Debug.Log("Hit1");
+                            hit.transform.gameObject.GetComponent<Renderer>().material = mat1;
+                        }
+                    } else if (LastSelected == null) {
+                            LastSelected = hit.transform.gameObject;
+                            lastMat = hit.transform.gameObject.GetComponent<Renderer>().material;
+                            Debug.Log("Hit2");
+                            hit.transform.gameObject.GetComponent<Renderer>().material = mat1;
+                        }
                     }
                 }
+                       
             }
-        }
+    }
+    
+    public void deselect() {
+        Debug.Log("dese");
+        LastSelected.gameObject.GetComponent<Renderer>().material = lastMat;
+
     }
 }
