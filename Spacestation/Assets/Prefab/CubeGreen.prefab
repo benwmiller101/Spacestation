@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4208214823876117585}
   m_Layer: 0
   m_Name: CubeGreen
-  m_TagString: Untagged
+  m_TagString: Module
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,3 +109,5 @@ MonoBehaviour:
   Node: {fileID: 1764441996030198501, guid: 5d87d018bb458b94e8d9ad0b2e53ddcd, type: 3}
   Node1pos: {x: 0, y: 0.6, z: 0}
   Node2pos: {x: -0.6, y: 0, z: 0}
+  Node3pos: {x: 0, y: 0, z: 0}
+  Node4pos: {x: 0, y: 0, z: 0}
