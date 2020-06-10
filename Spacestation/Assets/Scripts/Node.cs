@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private GameObject thisNode;
+    private Module parentMod;
+    private char axis;
+    private bool connected;
+    
+    private void connect(){
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void toggleRender(){
+
     }
+
+
+    
 }
