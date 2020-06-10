@@ -10,15 +10,12 @@ public class SelectModule : MonoBehaviour
     GameObject LastSelected = null;
     public Material lastMat;
     public bool selected;
+    public GameObject selectedModule;
 
 
     void Update()
     {
         Select();
-        if (selected)
-        {
-
-        }
     }
 
     public void Select()
@@ -32,6 +29,8 @@ public class SelectModule : MonoBehaviour
             {
                 if (hit.transform.gameObject.tag == "Module")
                 {
+                    selectedModule = hit.transform.gameObject;
+
                     if (LastSelected != null)
                     {
                         if (LastSelected.transform == hit.transform)
