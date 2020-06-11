@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class moveShip : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    public float speed; 
+
     void Update()
     {
-        transform.position += transform.forward * 0.001f;
+        transform.position += transform.forward * speed;
     }
 }
