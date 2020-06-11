@@ -13,6 +13,6 @@ public class moveShip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.up * -0.001f;
+        transform.position += transform.forward * 0.001f;
     }
 }
