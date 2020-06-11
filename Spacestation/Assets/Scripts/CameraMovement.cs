@@ -32,7 +32,7 @@ public class CameraMovement : MonoBehaviour
         CameraZoom();
         Select();
 
-        Debug.Log(selectedModule.transform.position);
+        
     }
 
 
@@ -54,79 +54,73 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-
-
-
-
-
     private void CameraRotate()
     {
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
-            previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
+            previousPosition =  cam.ScreenToViewportPoint(Input.mousePosition);
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
             Vector3 direction = previousPosition - cam.ScreenToViewportPoint(Input.mousePosition);
 
-            cam.transform.position = new Vector3();
+            //Change Camera Anchor point to selected item
+            cam.transform.position = selectedModule.transform.position;
 
             cam.transform.Rotate(new Vector3(1, 0, 0), direction.y * 180);
             cam.transform.Rotate(new Vector3(0, 1, 0), -direction.x * 180, Space.World);
-            cam.transform.Translate(new Vector3(0, 0, -10));
+            cam.transform.Translate(new Vector3(0, 0,  - 10));
 
             previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
+
         }
     }
 
     public void Select()
     {
+        //When Mouse is clicked send a raycast out
         if (Input.GetMouseButtonDown(1))
         {
-
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-
+            
+            
             if (Physics.Raycast(ray, out hit, 100))
             {
                 if (hit.transform.gameObject.tag == "Module")
                 {
+                    //If it hits object with module tag set the this objects position to new anchorpoint.
                     selectedModule = hit.transform.gameObject;
-                    AnchorX = selectedModule.transform.position.x;
-                    AnchorY = selectedModule.transform.position.y;
-                    AnchorZ = selectedModule.transform.position.z;
 
                     if (LastSelected != null)
                     {
                         if (LastSelected.transform == hit.transform)
                         {
-                            //Click the same object
+                            //Selected the same object
                             deselect();
                             LastSelected = null;
                             selected = false;
-
                         }
                         else
                         {
-                            //Click Another object
+                            /*Selected another object.
+                            Change the material of the initial object back to normal and change the newly selceted objects material to outline shader*/ 
                             deselect();
                             LastSelected = hit.transform.gameObject;
                             lastMat = hit.transform.gameObject.GetComponent<Renderer>().material;
                             hit.transform.gameObject.GetComponent<Renderer>().material = mat1;
                             selected = false;
-                            transform.position = new Vector3(-AnchorX, -AnchorY, -AnchorZ);
                         }
                     }
                     else if (LastSelected == null)
                     {
-                        //Click no object
+                        //If its the initial object being selected
                         LastSelected = hit.transform.gameObject;
                         lastMat = hit.transform.gameObject.GetComponent<Renderer>().material;
                         hit.transform.gameObject.GetComponent<Renderer>().material = mat1;
                         selected = true;
-                        transform.position = new Vector3(AnchorX, AnchorY, AnchorZ);
                     }
                 }
             }
@@ -137,7 +131,6 @@ public class CameraMovement : MonoBehaviour
     public void deselect()
     {
         LastSelected.gameObject.GetComponent<Renderer>().material = lastMat;
-
     }
 }
 
