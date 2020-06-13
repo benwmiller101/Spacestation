@@ -11,17 +11,20 @@ public class moveShip : MonoBehaviour
     public bool left = false;
     public bool forward = false;
     public bool back = false;
+    public Vector3 direction;
+
 
     //public string direction = myEnum.Item1;
     void Update()
     {
-
+        
         if (right) {
             left = false;
             forward = false;
             back = false;
+            direction = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
             transform.position += Vector3.right * Time.deltaTime * speed;
-            transform.Rotate(Vector3.up * 90f * Time.deltaTime);
+            transform.LookAt(transform.position + 10 * direction);
         }
         if (left)
         {
