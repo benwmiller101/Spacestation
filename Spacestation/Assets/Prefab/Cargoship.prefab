@@ -92,9 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da4e6d267e8a2be44bc70e00472b69f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -0.001
-  MaxDisFromOrigin: 0
+  speed: 1
+  MaxDisFromOrigin: 500
   right: 0
   left: 0
-  forward: 0
+  forward: 1
   back: 0
+  direction: {x: 0, y: 0, z: 0}
