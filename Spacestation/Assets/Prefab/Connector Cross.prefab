@@ -88,8 +88,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8438351670184587806}
+  - component: {fileID: 4184656923509335682}
   m_Layer: 0
-  m_Name: Connector_Cross
+  m_Name: Connector Cross
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,6 +113,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4184656923509335682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845967732635320333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656388eeac555144990090e4c946fe4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modType: Connector_Cross
+  Node: {fileID: 1764441996030198501, guid: 5d87d018bb458b94e8d9ad0b2e53ddcd, type: 3}
+  ModuleObj: {fileID: 4845967732635320333}
+  placed: 0
 --- !u!1 &6325666715145723405
 GameObject:
   m_ObjectHideFlags: 0
