@@ -15,22 +15,6 @@ public class AddModule : MonoBehaviour
     public GameObject node;
     public GameObject[] array = new GameObject[10];
 
-//Every frame, if mouse is clicking on hardpoing
-    void Update() {
-        if( Input.GetMouseButtonDown(0) )
-        {
-            Ray ray = Camera.main.ScreenPointToRay( Input.mousePosition );
-            RaycastHit hit;
-            
-            if( Physics.Raycast( ray, out hit, 100 )) {
-                if(hit.transform.gameObject.tag == "node") {
-                    PlacementMenu.gameObject.SetActive(true);
-                    node = hit.transform.gameObject;
-                }
-            }
-        }
-    }
-
 
 
 //Shows all nodes (gameObjects tagged with hp)
@@ -49,16 +33,19 @@ public class AddModule : MonoBehaviour
         PlacementMenu.SetActive(false);
 
         if(type == "green"){
-            Instantiate(CubeGreen, node.transform.position, Quaternion.identity);
+            Instantiate(CubeGreen);
         }else if(type == "blue"){
             Instantiate(CubeBlue, node.transform.position, Quaternion.identity);
         }else if(type == "long") {
-            Instantiate(Long, node.transform.position, Quaternion.identity);
+            Instantiate(Long);
         }else if(type == "cross") {
-            Instantiate(Cross, node.transform.position, Quaternion.identity);
+            Instantiate(Cross);
         }
         
         node.SetActive(false);
     }
 
+    public void showMenu() {
+        PlacementMenu.SetActive(true);
+    }
 }
