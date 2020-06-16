@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class UserControl : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class UserControl : MonoBehaviour
 
     private Vector3 previousPosition;
     private float minFov = 15f;
-    private float maxFov = 90f;
+    private float maxFov = 110f;
     public float sensitivity = 10f;
 
     float cameraDistanceMax = 20f;
@@ -22,7 +23,7 @@ public class UserControl : MonoBehaviour
     public float AnchorY = 0;
     public float AnchorZ = 0;
 
-    public Text ModuleName;
+    public TextMeshProUGUI ModuleName;
     public Text ModuleDescription;
     public GameObject ModuleInfo;
 
