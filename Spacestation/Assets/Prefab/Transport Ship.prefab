@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7550842978655186139}
   - component: {fileID: 7550842978655186136}
   m_Layer: 0
-  m_Name: Ship1
+  m_Name: Transport Ship
   m_TagString: Module
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,3 +112,4 @@ MonoBehaviour:
   left: 0
   forward: 0
   back: 0
+  direction: {x: 0, y: 0, z: 0}

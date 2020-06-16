@@ -4,7 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
-using TMPro;
+using System.Data;
+using System.Security.Cryptography;
 
 public class UserControl : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class UserControl : MonoBehaviour
 
     float cameraDistanceMax = 20f;
     float cameraDistanceMin = 1f;
+    public GameObject origin;
     public GameObject selectedModule;
 
     public float AnchorX = 0;
@@ -33,9 +35,12 @@ public class UserControl : MonoBehaviour
     public Material lastMat;
     public bool selected;
 
+    public bool delete = false;
+
     void Start()
     {
         ModuleInfo.SetActive(false);
+        
     }
 
 
@@ -44,8 +49,6 @@ public class UserControl : MonoBehaviour
         CameraRotate();
         CameraZoom();
         Select();
-
-        
     }
 
 
@@ -115,7 +118,7 @@ public class UserControl : MonoBehaviour
                             deselect();
                             LastSelected = null;
                             selected = false;
-                            ModuleInfo.SetActive(false);
+                            LeanTween.moveLocalY(ModuleInfo, 0, 0.5f).setEase(LeanTweenType.easeInOutCubic).setOnComplete(hideMenu);
                             ModuleName.text = "";
                         }
                         else
@@ -128,6 +131,7 @@ public class UserControl : MonoBehaviour
                             hit.transform.gameObject.GetComponent<Renderer>().material = mat1;
                             selected = false;
                             ModuleInfo.SetActive(true);
+                            LeanTween.moveLocalY(ModuleInfo, 100, 0.5f).setEase(LeanTweenType.easeInOutCubic);
                             ModuleName.text = hit.transform.gameObject.name;
                         }
                     }
@@ -139,12 +143,36 @@ public class UserControl : MonoBehaviour
                         hit.transform.gameObject.GetComponent<Renderer>().material = mat1;
                         selected = true;
                         ModuleInfo.SetActive(true);
+                        LeanTween.moveLocalY(ModuleInfo, 100, 0.5f).setEase(LeanTweenType.easeInOutCubic);
                         ModuleName.text = hit.transform.gameObject.name;
+                        
                     }
+                    
+
                 }
             }
-
         }
+    }
+
+    public void hideMenu()
+    {
+        ModuleInfo.SetActive(false);
+    }
+
+    public void Delete()
+    {
+        if(selectedModule != origin)
+        {
+            LeanTween.moveLocalY(ModuleInfo, 0, 0.5f).setEase(LeanTweenType.easeInOutCubic).setOnComplete(hideMenu);
+            Destroy(selectedModule);
+            Debug.Log("Destroyed");
+            selectedModule = origin;
+        }
+        else
+        {
+            Debug.Log("Cant Destroy");
+        }
+        
     }
 
     public void deselect()

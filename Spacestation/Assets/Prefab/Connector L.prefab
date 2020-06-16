@@ -341,8 +341,8 @@ GameObject:
   - component: {fileID: 6341350246273422079}
   - component: {fileID: 4255054389081341373}
   m_Layer: 0
-  m_Name: Connector_L 1
-  m_TagString: Untagged
+  m_Name: Connector L
+  m_TagString: Module
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

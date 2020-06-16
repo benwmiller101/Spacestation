@@ -108,9 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modType: BaseV1
   Node: {fileID: 1764441996030198501, guid: 5d87d018bb458b94e8d9ad0b2e53ddcd, type: 3}
+  node: {fileID: 0}
   ModuleObj: {fileID: 1228218692163008423}
   placed: 0
-  node: {fileID: 0}
-  example: {x: 0, y: 0, z: 0.5}
   created: 0
-  me: 
+  spawn: {x: 0, y: 0, z: 0.5}
