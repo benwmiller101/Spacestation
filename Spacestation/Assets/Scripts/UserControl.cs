@@ -21,9 +21,7 @@ public class UserControl : MonoBehaviour
     public GameObject origin;
     public GameObject selectedModule;
 
-    public float AnchorX = 0;
-    public float AnchorY = 0;
-    public float AnchorZ = 0;
+    public GameObject explosion;
 
     public TextMeshProUGUI ModuleName;
     public Text ModuleDescription;
@@ -49,6 +47,11 @@ public class UserControl : MonoBehaviour
         CameraRotate();
         CameraZoom();
         Select();
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("A");
+            
+        }
     }
 
 
@@ -107,7 +110,7 @@ public class UserControl : MonoBehaviour
             {
                 if (hit.transform.gameObject.tag == "Module")
                 {
-                    //If it hits object with module tag set the this objects position to new anchorpoint.
+                    //If it hits object with "module" tag, set this objects position to new anchorpoint.
                     selectedModule = hit.transform.gameObject;
 
                     if (LastSelected != null)
@@ -159,10 +162,14 @@ public class UserControl : MonoBehaviour
         ModuleInfo.SetActive(false);
     }
 
+    //When Delete button on UI is pressed
     public void Delete()
     {
-        if(selectedModule != origin)
+       // Instantiate(explosion, selectedModule.transform);
+        //Check if the object you want to delete is the origin (this is to prevent not having anything to add more moduals too.)
+        if (selectedModule != origin)
         {
+            //Hide selection window and delete object.
             LeanTween.moveLocalY(ModuleInfo, 0, 0.5f).setEase(LeanTweenType.easeInOutCubic).setOnComplete(hideMenu);
             Destroy(selectedModule);
             Debug.Log("Destroyed");
